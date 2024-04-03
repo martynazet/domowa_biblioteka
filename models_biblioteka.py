@@ -3,9 +3,8 @@ import json
 
 class Library:
     def __init__(self):
-        file_path = "C:\\Users\\User\\Desktop\\Kodilla\\Python\Flask\\library.json"
         try:
-            with open(file_path, "r", encoding="utf-8") as f:
+            with open("library.json", "r", encoding="utf-8") as f:
                 self.library = json.load(f)
         except FileNotFoundError:
             self.library = []
@@ -24,8 +23,7 @@ class Library:
         self.save_all()
 
     def save_all(self):
-        file_path = "C:\\Users\\User\\Desktop\\Kodilla\\Python\\Flask\\library.json"
-        with open(file_path, "w", encoding="utf-8") as f:
+        with open("library.json", "w", encoding="utf-8") as f:
             json.dump(self.library, f)
 
     def update(self, id, data):
