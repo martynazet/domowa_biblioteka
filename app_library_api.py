@@ -34,11 +34,11 @@ def create_book():
 @app.route("/api/v1/library/<int:book_id>", methods=["DELETE"])
 def delete_book(book_id):
     book = library.get(book_id)
-    if not book:
-        abort(404)
     result = library.delete(book_id)
     if result:
         return jsonify({"result": f"Usunięto {book["title"]}"})
+    else:
+        abort(404)
     
 @app.route("/api/v1/library/<int:book_id>", methods=["PUT"])
 def update_book(book_id):
